@@ -46,9 +46,9 @@ describe("Sync Server Tests", () => {
       doc.test = "hello world"
     })
 
-    const handle2 = repo2.find(handle.documentId)
+    const handle2 = repo2.find(handle.url)
 
-    handle2.value().then((doc) => {
+    handle2.doc().then((doc) => {
       assert.equal(doc.test, "hello world")
       done()
     })
@@ -74,11 +74,11 @@ describe("Sync Server Tests", () => {
 
     assert.equal(Object.keys(repo2.handles).length, 0)
 
-    const handle2 = repo2.find(handle.documentId)
+    const handle2 = repo2.find(handle.url)
 
     assert.equal(Object.keys(repo2.handles).length, 1)
 
-    const doc = await handle2.value()
+    const doc = await handle2.doc()
 
     assert.equal(doc.test, "hello world")
   })
