@@ -23,7 +23,8 @@ export class Server {
   #repo
 
   constructor() {
-    const dir = ".amrg"
+    const dir =
+      process.env.DATA_DIR !== undefined ? process.env.DATA_DIR : ".amrg"
     if (!fs.existsSync(dir)) {
       fs.mkdirSync(dir)
     }
