@@ -1,5 +1,4 @@
 // @ts-check
-
 import assert from "assert"
 import { before, after } from "mocha"
 import { WebSocket } from "ws"

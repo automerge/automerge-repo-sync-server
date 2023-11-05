@@ -19,6 +19,9 @@ export class Server {
 
   #isReady = false
 
+  /** @type Repo */
+  #repo
+
   constructor() {
     const dir = ".amrg"
     if (!fs.existsSync(dir)) {
@@ -37,13 +40,13 @@ export class Server {
     const config = {
       network: [new NodeWSServerAdapter(this.#socket)],
       storage: new NodeFSStorageAdapter(),
-      /** @ts-ignore @type {(import("automerge-repo").PeerId)}  */
+      /** @ts-ignore @type {(import("@automerge/automerge-repo").PeerId)}  */
       peerId: `storage-server-${hostname}`,
       // Since this is a server, we don't share generously — meaning we only sync documents they already
       // know about and can ask for by ID.
       sharePolicy: async () => false,
     }
-    const serverRepo = new Repo(config)
+    this.#repo = new Repo(config)
 
     app.get("/", (req, res) => {
       res.send(`👍 @automerge/automerge-repo-sync-server is running`)
