@@ -1,5 +1,10 @@
 # v0.2.3
 
+- Add DATA_DIR environment variable to control where the nodefs storage adapter
+  stores its data
+
+# v0.2.3
+
 - Fix package.json so this can run using `npx automerge-repo-sync-server`
 
 # v0.2.3
