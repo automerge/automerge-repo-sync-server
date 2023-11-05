@@ -1,6 +1,6 @@
 {
   "name": "@automerge/automerge-repo-sync-server",
-  "version": "0.2.3",
+  "version": "0.2.4",
   "main": "src/index.js",
   "license": "MIT",
   "type": "module",
@@ -9,6 +9,10 @@
     "test": "mocha --exit",
     "prettier": "prettier -c ."
   },
+  "files": [
+    "src/index.js",
+    "src/server.js"
+  ],
   "bin": "./src/index.js",
   "dependencies": {
     "@automerge/automerge": "^2.1.6",
