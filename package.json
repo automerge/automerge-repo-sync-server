@@ -1,6 +1,6 @@
 {
   "name": "@automerge/automerge-repo-sync-server",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "main": "src/index.js",
   "license": "MIT",
   "type": "module",
