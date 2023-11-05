@@ -1,5 +1,9 @@
 # v0.2.3
 
+- Correctly pass DATA_DIR to nodefs storage plugin
+
+# v0.2.3
+
 - Add DATA_DIR environment variable to control where the nodefs storage adapter
   stores its data
 

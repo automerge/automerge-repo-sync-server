@@ -40,7 +40,7 @@ export class Server {
 
     const config = {
       network: [new NodeWSServerAdapter(this.#socket)],
-      storage: new NodeFSStorageAdapter(),
+      storage: new NodeFSStorageAdapter(dir),
       /** @ts-ignore @type {(import("@automerge/automerge-repo").PeerId)}  */
       peerId: `storage-server-${hostname}`,
       // Since this is a server, we don't share generously — meaning we only sync documents they already
