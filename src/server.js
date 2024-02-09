@@ -65,11 +65,13 @@ export class Server {
     this.#server.on("upgrade", (request, socket, head) => {
       this.#socket.handleUpgrade(request, socket, head, (socket) => {
         socket.on("message", (msg) => {
-          const message = cbor.decode(msg)
 
-          if (message.type === "sync" && message.data) {
-            console.log(Automerge.decodeSyncMessage(message.data))
-          }
+          const message = cbor.decode(msg)
+          console.log(message)
+
+          //if (message.type === "sync" && message.data) {
+          //  console.log(Automerge.decodeSyncMessage(message.data))
+          //}
         })
         this.#socket.emit("connection", socket, request)
       })
