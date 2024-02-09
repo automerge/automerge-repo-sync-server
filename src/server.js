@@ -36,14 +36,6 @@ export class Server {
 
     this.#socket = new WebSocketServer({ noServer: true })
 
-    this.#socket.on("message", (msg) => {
-      const message = cbor.decode(msg)
-
-      if (message.type ==="sync" && message.data) {
-        console.log(Automerge.decodeSyncMessage(message.data))
-      }
-    })
-
     const PORT =
       process.env.PORT !== undefined ? parseInt(process.env.PORT) : 3030
     const app = express()
@@ -72,6 +64,13 @@ export class Server {
 
     this.#server.on("upgrade", (request, socket, head) => {
       this.#socket.handleUpgrade(request, socket, head, (socket) => {
+        socket.on("message", (msg) => {
+          const message = cbor.decode(msg)
+
+          if (message.type === "sync" && message.data) {
+            console.log(Automerge.decodeSyncMessage(message.data))
+          }
+        })
         this.#socket.emit("connection", socket, request)
       })
     })
