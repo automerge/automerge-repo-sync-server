@@ -7,6 +7,9 @@ import { NodeWSServerAdapter } from "@automerge/automerge-repo-network-websocket
 import { NodeFSStorageAdapter } from "@automerge/automerge-repo-storage-nodefs"
 import os from "os"
 
+import { next as Automerge } from "@automerge/automerge"
+import { cbor } from "@automerge/automerge-repo"
+
 export class Server {
   /** @type WebSocketServer */
   #socket
@@ -32,6 +35,14 @@ export class Server {
     var hostname = os.hostname()
 
     this.#socket = new WebSocketServer({ noServer: true })
+
+    this.#socket.on("message", (msg) => {
+      const message = cbor.decode(msg)
+
+      if (message.type ==="sync" && message.data) {
+        console.log(Automerge.decodeSyncMessage(message.data))
+      }
+    })
 
     const PORT =
       process.env.PORT !== undefined ? parseInt(process.env.PORT) : 3030
