@@ -1,7 +1,7 @@
 # syntax=docker/dockerfile:1.4
 FROM node:lts-slim AS development
 
-LABEL org.opencontainers.image.source=https://github.com/heckj/automerge-repo-sync-server
+LABEL org.opencontainers.image.source=https://github.com/automerge/automerge-repo-sync-server
 LABEL org.opencontainers.image.description="A debugging/test instance of automerge-repo-sync-server"
 LABEL org.opencontainers.image.licenses=MIT
 
