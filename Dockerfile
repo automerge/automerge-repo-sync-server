@@ -9,7 +9,7 @@ LABEL org.opencontainers.image.licenses=MIT
 WORKDIR /usr/src/app
 
 COPY package.json ./package.json
-RUN yarn install
+RUN npm install
 
 COPY . .
 
