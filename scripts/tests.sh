@@ -1,7 +1,7 @@
-yarn start & background_pid=$!
+npm run start & background_pid=$!
 
 # Run the tests
-yarn test:run
+npm run test:run
 return_value=$?
 
 kill -SIGTERM $background_pid

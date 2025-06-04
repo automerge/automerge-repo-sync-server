@@ -13,8 +13,8 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: install
-        run: yarn install
+        run: npm install
       - name: format
-        run: yarn prettier -c .
+        run: npm run prettier -c .
       - name: test
-        run: yarn test
+        run: npm run test
