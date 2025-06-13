@@ -15,7 +15,7 @@
   ],
   "bin": "./src/index.js",
   "dependencies": {
-    "@automerge/automerge": "3.0.0-beta.1",
+    "@automerge/automerge": "3.0.0-beta.3",
     "@automerge/automerge-repo": "^2.0.0",
     "@automerge/automerge-repo-network-websocket": "^2.0.0",
     "@automerge/automerge-repo-storage-nodefs": "^2.0.0",
@@ -31,7 +31,7 @@
     "typescript": "^4.7.4"
   },
   "overrides": {
-    "@automerge/automerge": "3.0.0-beta.1"
+    "@automerge/automerge": "3.0.0-beta.3"
   },
   "prettier": {
     "semi": false
