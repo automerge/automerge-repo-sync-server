@@ -30,7 +30,7 @@ describe("Sync Server Tests", () => {
     })
   })
 
-  it("can sync a document with the server and get back the same document", (done) => {
+  it("can sync a document with the server and get back the same document", async () => {
     const repo = new Repo({
       network: [new BrowserWebSocketClientAdapter(`ws://localhost:${PORT}`)],
     })
@@ -45,12 +45,9 @@ describe("Sync Server Tests", () => {
       doc.test = "hello world"
     })
 
-    const handle2 = repo2.find(handle.url)
+    const handle2 = await repo2.find(handle.url)
 
-    handle2.doc().then((doc) => {
-      assert.equal(doc.test, "hello world")
-      done()
-    })
+    assert.equal(handle2.doc().test, "hello world")
   })
 
   it("withholds existing documents from new peers until they request them", async () => {
@@ -73,7 +70,7 @@ describe("Sync Server Tests", () => {
 
     assert.equal(Object.keys(repo2.handles).length, 0)
 
-    const handle2 = repo2.find(handle.url)
+    const handle2 = await repo2.find(handle.url)
 
     assert.equal(Object.keys(repo2.handles).length, 1)
 
