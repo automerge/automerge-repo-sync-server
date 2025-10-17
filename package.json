@@ -7,7 +7,8 @@
   "scripts": {
     "start": "node ./src/index.js",
     "test": "mocha --exit",
-    "prettier": "prettier -c ."
+    "prettier": "prettier -c .",
+    "nix:deps": "echo \"\\\"$(nix run nixpkgs#prefetch-npm-deps package-lock.json)\\\"\" > npm-deps-hash.nix"
   },
   "files": [
     "src/index.js",
