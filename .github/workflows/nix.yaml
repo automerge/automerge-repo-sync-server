@@ -1,0 +1,47 @@
+name: Nix Package
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  deps-hash-check:
+    runs-on: ubuntu-latest
+    continue-on-error: true
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: cachix/install-nix-action@v31
+
+      - name: install
+        run: npm ci --omit=dev
+
+      - name: Verify npm-deps-hash.nix
+        run: |
+          echo "Computing hash of npm dependencies..."
+          nix run nixpkgs#prefetch-npm-deps package-lock.json > nix-expected-hash.txt
+          expected=$(cat nix-expected-hash.txt | tr -d '\n')
+          current=$(cat npm-deps-hash.nix | tr -d '\n' | tr -d '"')
+
+          echo ""
+          if [ "$expected" != "$current" ]; then
+            echo "::warning::Nix deps hash in npm-deps-hash.nix is out of sync with package-lock.json"
+            echo "::warning::Current:  $current"
+            echo "::warning::Expected: $expected"
+            echo ""
+            echo "➡️  To update to the expected hash, run:"
+            echo ""
+            echo "      echo \"\\\"$expected\\\"\" > npm-deps-hash.nix"
+            echo ""
+            echo "➡️  or if you have Nix installed, you can always sync it with:"
+            echo ""
+            echo "      npm run nix:deps"
+            echo ""
+            echo ""
+            exit 1
+          else
+            echo "✅ npm-deps-hash.nix is up to date (\"$expected\")"
+          fi

@@ -2,3 +2,6 @@
 /*.amrg
 
 automerge-repo-data
+
+# Nix
+nix-expected-hash.txt
