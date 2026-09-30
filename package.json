@@ -16,9 +16,9 @@
   "bin": "./src/index.js",
   "dependencies": {
     "@automerge/automerge": "^3.5.0",
-    "@automerge/automerge-repo": "^2.4.0",
-    "@automerge/automerge-repo-network-websocket": "^2.4.0",
-    "@automerge/automerge-repo-storage-nodefs": "^2.4.0",
+    "@automerge/automerge-repo": "^2.5.6",
+    "@automerge/automerge-repo-network-websocket": "^2.5.6",
+    "@automerge/automerge-repo-storage-nodefs": "^2.5.6",
     "express": "^4.18.1",
     "glob": "10.3.10",
     "ws": "^8.7.0"
