@@ -39,6 +39,12 @@ docker stop syncserver
 docker rm syncserver
 ```
 
+## Publishing releases
+
+Publishing a GitHub release triggers `.github/workflows/release.yaml`, which
+installs locked dependencies, runs the tests, and publishes to npm using
+[trusted publishing](https://docs.npmjs.com/trusted-publishers/).
+
 ## Contributors
 
 Originally written by @pvh.

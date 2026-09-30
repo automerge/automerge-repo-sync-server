@@ -3,6 +3,10 @@
   "version": "0.3.0",
   "main": "src/index.js",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/automerge/automerge-repo-sync-server.git"
+  },
   "type": "module",
   "scripts": {
     "start": "node ./src/index.js",
