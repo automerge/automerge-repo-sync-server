@@ -22,6 +22,16 @@ describe("Sync Server Tests", () => {
     server.close()
   })
 
+  it("serves the HTTP status page", async () => {
+    const response = await fetch(`http://localhost:${PORT}/`)
+
+    assert.equal(response.status, 200)
+    assert.equal(
+      await response.text(),
+      "👍 @automerge/automerge-repo-sync-server is running",
+    )
+  })
+
   it("runs the server correctly", (done) => {
     const ws = new WebSocket(`ws://localhost:${PORT}`)
 
