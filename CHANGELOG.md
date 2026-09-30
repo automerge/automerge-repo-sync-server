@@ -1,3 +1,10 @@
+# v0.3.0
+
+- Upgrade to @automerge/automerge@3.5.0 and @automerge/automerge-repo@2.5.6,
+  including the WebSocket and NodeFS storage adapters.
+- Log the storage ID on server startup.
+- Upgrade other dependencies
+
 # v0.2.3
 
 - Correctly pass DATA_DIR to nodefs storage plugin
